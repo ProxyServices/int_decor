@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250)
-    author = models.ForeignKey(User,related_name='blog_posts')
+    author = models.ForeignKey(User,related_name='blog_posts', on_delete=models.CASCADE)
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
@@ -20,7 +20,7 @@ class Property(models.Model):
     address = models.TextField(max_length=50)
 
 class PropertyImage(models.Model):
-    property = models.ForeignKey(Property, related_name='images')
+    property = models.ForeignKey(Property, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField()  
 
     
