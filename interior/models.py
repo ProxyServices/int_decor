@@ -14,3 +14,14 @@ class Post(models.Model):
     
     def __str__(self):
         return self.title
+
+class Property(models.Model):
+    proname = models.TextField(max_length=25)
+    address = models.TextField(max_length=50)
+
+class PropertyImage(models.Model):
+    property = models.ForeignKey(Property, related_name='images')
+    image = models.ImageField()  
+
+    
+    
